@@ -10,7 +10,9 @@ use App\Api;
 class ViajesController extends Controller
 {
     public function index($vehiculoId){
-    	$response = Api::requestApi('https://us.mzoneweb.net/api/v2/vehicles/'.$vehiculoId.'/trips.json');
-    	return $response;
+        $response = Api::requestApi('https://us.mzoneweb.net/api/v2/vehicles/'.$vehiculoId.'/trips.json');
+
+        return response($response)
+            ->header('Content-Type', 'application/json');
     }
 }

@@ -11,7 +11,9 @@ class VehiculosController extends Controller
 {
     //
     public function index($grupoId){
-    	$response = Api::requestApi('https://us.mzoneweb.net/api/v2/vehiclegroups/'.$grupoId.'/vehicles.json');
-    	return $response;
+        $response = Api::requestApi('https://us.mzoneweb.net/api/v2/vehiclegroups/'.$grupoId.'/vehicles.json');
+
+        return response($response)
+            ->header('Content-Type', 'application/json');
     }
 }

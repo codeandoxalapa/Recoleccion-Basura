@@ -10,13 +10,16 @@ use App\Api;
 
 class GruposVehiculoController extends Controller
 {
-    public function show(){
-    	
+    public function show()
+    {
+
     }
 
-    public function index(){
-    	$response = Api::requestApi('https://us.mzoneweb.net/api/v2/vehiclegroups.json');
-    	return $response;
-    	//return view('response',['responseapi'=>$response]); 
+    public function index()
+    {
+        $response = Api::requestApi('https://us.mzoneweb.net/api/v2/vehiclegroups.json');
+
+        return response($response)
+            ->header('Content-Type', 'application/json');
     }
 }

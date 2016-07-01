@@ -11,7 +11,9 @@ class UltimaPosicionVehiculoController extends Controller
 {
     //
     public function index($vehiculoId){
-    	$response = Api::requestApi('https://us.mzoneweb.net/api/v2/vehicles/'.$vehiculoId.'/lastknownposition.json');
-    	return $response;
+        $response = Api::requestApi('https://us.mzoneweb.net/api/v2/vehicles/'.$vehiculoId.'/lastknownposition.json');
+
+        return response($response)
+            ->header('Content-Type', 'application/json');
     }
 }
